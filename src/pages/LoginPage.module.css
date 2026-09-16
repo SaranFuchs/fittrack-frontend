@@ -1,0 +1,20 @@
+.page { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(420px, .85fr); color: #fff; background: #141414; }
+.pitch { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(2rem, 6vw, 5.5rem); background: radial-gradient(circle at 80% 10%, #59151b 0, transparent 30%), linear-gradient(135deg, #111 0 64%, #1f1f1f 64%); }
+.brand { display: flex; align-items: center; gap: .75rem; font-size: 1.15rem; }
+.brand > span { display: grid; place-items: center; width: 45px; height: 45px; background: var(--color-primary); font-weight: 950; transform: skew(-8deg); }
+.brand em { display: block; color: var(--color-primary); font-size: .65rem; font-style: normal; letter-spacing: .25em; }
+.kicker { color: #ff7279; font-size: .8rem; font-weight: 850; letter-spacing: .18em; }
+.pitch h1 { margin: .7rem 0 1.2rem; font-size: clamp(3.1rem, 7vw, 6.8rem); line-height: .88; letter-spacing: -.055em; }
+.pitch h1 span { color: var(--color-primary); }
+.pitch p { max-width: 560px; color: #bbb; }
+.stat { display: flex; align-items: center; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid #333; }
+.stat svg { color: var(--color-primary); }
+.stat strong, .stat span { display: block; }
+.stat span { margin-top: .2rem; color: #999; font-size: .85rem; }
+.formPanel { display: grid; place-items: center; padding: 2rem; background: #f3f3f3; color: var(--color-text); }
+.form { width: min(430px, 100%); display: grid; gap: 1.15rem; padding: clamp(1.5rem, 4vw, 3rem); background: #fff; border-top: 6px solid var(--color-primary); box-shadow: 0 24px 70px rgb(0 0 0 / .16); }
+.form h2 { margin: -.5rem 0; font-size: 2.4rem; }
+.form label { display: grid; gap: .4rem; font-weight: 700; }
+.demo { display: grid; gap: .25rem; margin-top: .5rem; padding: .9rem; background: #f4f4f4; font-size: .8rem; color: #666; }
+.demo strong { color: #222; }
+@media (max-width: 850px) { .page { grid-template-columns: 1fr; } .pitch { min-height: auto; gap: 3rem; padding: 2rem; } .pitch h1 { font-size: 3.3rem; } .formPanel { min-height: 520px; padding: 1rem; } }
