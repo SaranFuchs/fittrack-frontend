@@ -1,0 +1,14 @@
+.editor { display: grid; gap: 1.25rem; }
+.dayCount { max-width: 260px; display: grid; gap: .35rem; font-weight: 700; }
+.day { display: grid; gap: 1rem; padding: 1.25rem; border: 1px solid var(--color-border); border-top: 5px solid #222; background: #fff; }
+.day > header { display: grid; grid-template-columns: 1fr minmax(220px, .7fr); gap: 1rem; align-items: end; }
+.day > header label, .exercise label { display: grid; gap: .3rem; font-size: .85rem; font-weight: 700; }
+.exercises { display: grid; gap: .85rem; }
+.exercise { display: grid; grid-template-columns: 1.4fr repeat(3, .55fr); gap: .8rem; padding: 1rem; background: #f4f4f4; border-left: 3px solid #bbb; }
+.exerciseHead { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; }
+.exerciseHead div { display: flex; gap: .3rem; }
+.exerciseHead button { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid #ccc; background: #fff; }
+.name { grid-column: 1 / -1; }
+.targets { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+.exercise > label:last-child { grid-column: 1 / -1; }
+@media (max-width: 700px) { .day > header { grid-template-columns: 1fr; } .targets { grid-template-columns: 1fr; } .day { padding: 1rem; } }

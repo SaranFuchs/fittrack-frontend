@@ -6,6 +6,11 @@ import { AppLayout } from './layouts/AppLayout'
 import { AccountPage } from './pages/AccountPage'
 import { LoginPage } from './pages/LoginPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
+import { AddClientPage } from './pages/trainer/AddClientPage'
+import { ClientDetailPage } from './pages/trainer/ClientDetailPage'
+import { ClientsPage } from './pages/trainer/ClientsPage'
+import { TrainerDashboard } from './pages/trainer/TrainerDashboard'
+import { TrainerWorkoutPlanPage } from './pages/trainer/TrainerWorkoutPlanPage'
 import './styles/global.css'
 
 export default function App() {
@@ -17,11 +22,11 @@ export default function App() {
           <Route element={<ProtectedRoute />}>
             <Route element={<RoleRoute role="trainer" />}>
               <Route path="/trainer" element={<AppLayout role="trainer" />}>
-                <Route index element={<PlaceholderPage title="Trainer dashboard" />} />
-                <Route path="clients" element={<PlaceholderPage title="Clients" />} />
-                <Route path="clients/new" element={<PlaceholderPage title="Add client" />} />
-                <Route path="clients/:clientId" element={<PlaceholderPage title="Client profile" />} />
-                <Route path="clients/:clientId/workout-plan" element={<PlaceholderPage title="Workout plan" />} />
+                <Route index element={<TrainerDashboard />} />
+                <Route path="clients" element={<ClientsPage />} />
+                <Route path="clients/new" element={<AddClientPage />} />
+                <Route path="clients/:clientId" element={<ClientDetailPage />} />
+                <Route path="clients/:clientId/workout-plan" element={<TrainerWorkoutPlanPage />} />
                 <Route path="clients/:clientId/workout/:dayNumber/record" element={<PlaceholderPage title="Record workout" />} />
                 <Route path="clients/:clientId/history" element={<PlaceholderPage title="Workout history" />} />
                 <Route path="clients/:clientId/nutrition" element={<PlaceholderPage title="Nutrition log" />} />
