@@ -1,16 +1,35 @@
-# React + Vite
+# FitTrack Coach frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Responsive React/Vite interface for trainers and clients. It uses React Router,
+native `fetch`, React context for authentication, CSS Modules, and the FitTrack
+global visual system.
 
-Currently, two official plugins are available:
+## Local setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Start the backend first, then run:
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Open `http://localhost:5173`. The API defaults to
+`http://localhost:3000/api`; copy `.env.example` to `.env` only when you need a
+different URL.
 
-## Expanding the ESLint configuration
+## Seeded demo accounts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Run `npm run seed` in `../backend` before signing in.
+
+| Role | Email | Password |
+|---|---|---|
+| Trainer | `demo.trainer@fittrack.local` | `FitTrackDemo!2026` |
+| Client | `alex.client@fittrack.local` | `ClientDemo!2026` |
+| Client | `jamie.client@fittrack.local` | `ClientDemo!2026` |
+
+## Checks
+
+```bash
+npm run lint
+npm run build
+```

@@ -46,7 +46,7 @@ export function LoginPage() {
           <label>Email<input type="email" autoComplete="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} placeholder="you@example.com" /></label>
           <label>Password<input type="password" autoComplete="current-password" value={form.password} onChange={(event) => setForm({ ...form, password: event.target.value })} placeholder="Your password" /></label>
           <button className="button button-primary button-wide" disabled={submitting}>{submitting ? 'Logging in…' : 'Log in'}</button>
-          <div className={styles.demo}><strong>Demo access</strong><span>Trainer: demo.trainer@fittrack.local</span><span>Client: alex.client@fittrack.local</span></div>
+          <div className={styles.demo}><strong>Demo access</strong><span>Trainer: demo.trainer@fittrack.local · FitTrackDemo!2026</span><span>Client: alex.client@fittrack.local · ClientDemo!2026</span></div>
         </form>
       </section>
     </main>
