@@ -5,7 +5,11 @@ import { RoleRoute } from './auth/RoleRoute'
 import { AppLayout } from './layouts/AppLayout'
 import { AccountPage } from './pages/AccountPage'
 import { LoginPage } from './pages/LoginPage'
-import { PlaceholderPage } from './pages/PlaceholderPage'
+import { ClientDashboard } from './pages/client/ClientDashboard'
+import { WorkoutSplitPage } from './pages/client/WorkoutSplitPage'
+import { NutritionPage } from './pages/shared/NutritionPage'
+import { WorkoutHistoryPage } from './pages/shared/WorkoutHistoryPage'
+import { WorkoutRecordPage } from './pages/shared/WorkoutRecordPage'
 import { AddClientPage } from './pages/trainer/AddClientPage'
 import { ClientDetailPage } from './pages/trainer/ClientDetailPage'
 import { ClientsPage } from './pages/trainer/ClientsPage'
@@ -27,19 +31,19 @@ export default function App() {
                 <Route path="clients/new" element={<AddClientPage />} />
                 <Route path="clients/:clientId" element={<ClientDetailPage />} />
                 <Route path="clients/:clientId/workout-plan" element={<TrainerWorkoutPlanPage />} />
-                <Route path="clients/:clientId/workout/:dayNumber/record" element={<PlaceholderPage title="Record workout" />} />
-                <Route path="clients/:clientId/history" element={<PlaceholderPage title="Workout history" />} />
-                <Route path="clients/:clientId/nutrition" element={<PlaceholderPage title="Nutrition log" />} />
+                <Route path="clients/:clientId/workout/:dayNumber/record" element={<WorkoutRecordPage role="trainer" />} />
+                <Route path="clients/:clientId/history" element={<WorkoutHistoryPage role="trainer" />} />
+                <Route path="clients/:clientId/nutrition" element={<NutritionPage role="trainer" />} />
                 <Route path="account" element={<AccountPage />} />
               </Route>
             </Route>
             <Route element={<RoleRoute role="client" />}>
               <Route path="/client" element={<AppLayout role="client" />}>
-                <Route index element={<PlaceholderPage title="Client dashboard" />} />
-                <Route path="workout" element={<PlaceholderPage title="Workout split" />} />
-                <Route path="workout/:dayNumber/record" element={<PlaceholderPage title="Record workout" />} />
-                <Route path="history" element={<PlaceholderPage title="Workout history" />} />
-                <Route path="nutrition" element={<PlaceholderPage title="Nutrition" />} />
+                <Route index element={<ClientDashboard />} />
+                <Route path="workout" element={<WorkoutSplitPage />} />
+                <Route path="workout/:dayNumber/record" element={<WorkoutRecordPage role="client" />} />
+                <Route path="history" element={<WorkoutHistoryPage role="client" />} />
+                <Route path="nutrition" element={<NutritionPage role="client" />} />
                 <Route path="account" element={<AccountPage />} />
               </Route>
             </Route>
