@@ -12,3 +12,11 @@ export function formatDate(value) {
 export function enumLabel(value) {
   return value?.replaceAll('_', ' ').toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase()) || ''
 }
+
+export function targetBalance(remaining) {
+  const over = remaining < 0
+  return {
+    over,
+    display: over ? `+${Math.abs(remaining)}` : remaining,
+  }
+}
