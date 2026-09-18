@@ -2,9 +2,11 @@ import { Save } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../../api/http'
-import { ErrorState, LoadingState } from '../../components/common/States'
+import { ErrorState, LoadingState, StatusBadge } from '../../components/common/States'
 import { WorkoutPlanEditor } from '../../components/workout/WorkoutPlanEditor'
 import { useApiData } from '../../hooks/useApiData'
+import { enumLabel } from '../../utils/format'
+import styles from './Trainer.module.css'
 
 export function TrainerWorkoutPlanPage() {
   const { clientId } = useParams()
@@ -29,9 +31,9 @@ function PlanContent({ initial, clientId, reload }) {
     finally { setSaving(false) }
   }
   return <div className="page-stack">
-    <header className="page-header"><div><p className="eyebrow">PROGRAM DESIGN</p><h1>WORKOUT PLAN</h1><p>Revision {plan.revision} · Cycle {initial.cycle.cycleNumber} · {plan.days.length} workout days</p></div><button className="button button-primary" onClick={save} disabled={saving}><Save size={18} /> {saving ? 'Saving…' : 'Save new revision'}</button></header>
+    <header className="page-header"><div><p className="eyebrow">PROGRAM DESIGN</p><h1>COMPLETE WORKOUT SPLIT</h1><p>Revision {plan.revision} · Cycle {initial.cycle.cycleNumber} · {plan.days.length} workout days. Every day remains recordable.</p></div><button className="button button-primary" onClick={save} disabled={saving}><Save size={18} /> {saving ? 'Saving…' : 'Save new revision'}</button></header>
     {status && <div className="alert alert-success">{status}</div>}{error && <div className="alert alert-error">{error}</div>}
-    <section className="card"><p className="eyebrow">RECORD FOR CLIENT</p><h2>Current cycle</h2><div className="profile-actions">{initial.cycle.days.map((day) => day.status === 'COMPLETED' ? <span className="button button-ghost" key={day.dayNumber}>Day {day.dayNumber} · Complete</span> : <Link className="button button-secondary" key={day.dayNumber} to={`/trainer/clients/${clientId}/workout/${day.dayNumber}/record`}>Record Day {day.dayNumber}</Link>)}</div></section>
+    <section className="card"><p className="eyebrow">RECORD FOR CLIENT</p><h2>Current cycle</h2><p className="muted">Status is informational. Select any configured day, including one already completed this cycle.</p><div className={styles.recordDayGrid}>{plan.days.map((day) => { const cycleDay = initial.cycle.days.find((item) => item.dayNumber === day.dayNumber); return <div className={styles.recordDay} key={day.dayNumber}><div><strong>Day {day.dayNumber} · {day.name || 'Workout'}</strong><StatusBadge tone={cycleDay?.status === 'COMPLETED' ? 'success' : cycleDay?.status === 'NEXT_SUGGESTED' ? 'warning' : 'neutral'}>{enumLabel(cycleDay?.status)}</StatusBadge></div><Link className="button button-secondary" to={`/trainer/clients/${clientId}/workout/${day.dayNumber}/record`}>{cycleDay?.status === 'COMPLETED' ? `Record Day ${day.dayNumber} again` : `Record Day ${day.dayNumber}`}</Link></div> })}</div></section>
     <WorkoutPlanEditor plan={plan} onChange={setPlan} />
   </div>
 }

@@ -2,7 +2,9 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './auth/AuthContext'
 import { ProtectedRoute } from './auth/ProtectedRoute'
 import { RoleRoute } from './auth/RoleRoute'
+import { NumberInputWheelGuard } from './components/common/NumberInputWheelGuard'
 import { AppLayout } from './layouts/AppLayout'
+import { TrainerClientLayout } from './layouts/TrainerClientLayout'
 import { AccountPage } from './pages/AccountPage'
 import { LoginPage } from './pages/LoginPage'
 import { ClientDashboard } from './pages/client/ClientDashboard'
@@ -21,6 +23,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <NumberInputWheelGuard />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route element={<ProtectedRoute />}>
@@ -29,11 +32,13 @@ export default function App() {
                 <Route index element={<TrainerDashboard />} />
                 <Route path="clients" element={<ClientsPage />} />
                 <Route path="clients/new" element={<AddClientPage />} />
-                <Route path="clients/:clientId" element={<ClientDetailPage />} />
-                <Route path="clients/:clientId/workout-plan" element={<TrainerWorkoutPlanPage />} />
-                <Route path="clients/:clientId/workout/:dayNumber/record" element={<WorkoutRecordPage role="trainer" />} />
-                <Route path="clients/:clientId/history" element={<WorkoutHistoryPage role="trainer" />} />
-                <Route path="clients/:clientId/nutrition" element={<NutritionPage role="trainer" />} />
+                <Route path="clients/:clientId" element={<TrainerClientLayout />}>
+                  <Route index element={<ClientDetailPage />} />
+                  <Route path="workout-plan" element={<TrainerWorkoutPlanPage />} />
+                  <Route path="workout/:dayNumber/record" element={<WorkoutRecordPage role="trainer" />} />
+                  <Route path="history" element={<WorkoutHistoryPage role="trainer" />} />
+                  <Route path="nutrition" element={<NutritionPage role="trainer" />} />
+                </Route>
                 <Route path="account" element={<AccountPage />} />
               </Route>
             </Route>

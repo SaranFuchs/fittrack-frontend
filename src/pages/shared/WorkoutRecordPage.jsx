@@ -15,8 +15,6 @@ export function WorkoutRecordPage({ role }) {
   if (error) return <ErrorState message={error} onRetry={reload} />
   const day = data.plan.days.find((item) => item.dayNumber === Number(dayNumber))
   if (!day) return <ErrorState message="Workout day not found." />
-  const status = data.cycle.days.find((item) => item.dayNumber === day.dayNumber)?.status
-  if (status === 'COMPLETED') return <ErrorState message="This workout day is already complete in the current cycle." />
   return <WorkoutRecordForm role={role} clientId={clientId} day={day} />
 }
 

@@ -27,4 +27,8 @@
 .profileNav { display: flex; flex-wrap: wrap; gap: .6rem; }
 .detailHero { display: flex; align-items: center; gap: 1rem; padding: 1.5rem; color: #fff; background: #1d1d1d; }
 .detailHero .avatar { width: 64px; height: 64px; background: var(--color-primary); }
+.recordDayGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: .7rem; margin-top: 1rem; }
+.recordDay { display: grid; gap: .8rem; padding: .9rem; border: 1px solid var(--color-border); background: #f6f6f6; }
+.recordDay > div { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+.recordDay .button { width: 100%; }
 @media (max-width: 780px) { .steps { grid-template-columns: 1fr; } .step { min-height: 44px; } .fieldGrid, .reviewGrid { grid-template-columns: 1fr; } }
