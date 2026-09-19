@@ -113,7 +113,7 @@ A trainer will only be able to access clients assigned to them.
 > $A$ = age in years
 > The values for each activity levels are just estimates of how much energy one would expend on top of `BMR`
 
-> **Note:** this calculation is just an ==estimation== of energy expenditure based on given values. The suggested value is up to the trainer to adjust according to each clients goals as to precisely determine `BMR` and `TDEE` a dedicated machine would be required.
+> **Note:** this calculation is just an <mark>estimation</mark> of energy expenditure based on given values. The suggested value is up to the trainer to adjust according to each clients goals as to precisely determine `BMR` and `TDEE` a dedicated machine would be required.
 
 8. adjust the `Daily calorie target` and `Daily protein target (g)` if required
 9. click continue
