@@ -14,8 +14,10 @@ npm run dev
 ```
 
 Open `http://localhost:5173`. The API defaults to
-`http://localhost:3000/api`; copy `.env.example` to `.env` only when you need a
-different URL.
+`http://localhost:3000/backend/api`; copy `.env.example` to `.env` only when you
+need a different URL. Production Docker builds should pass
+`VITE_API_BASE_URL=/backend/api` so browser requests stay on the public Nginx
+origin.
 
 ## Seeded demo accounts
 

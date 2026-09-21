@@ -20,9 +20,9 @@ COPY . .
 
 # Vite inlines VITE_* vars at build time; pass via --build-arg to override .env files
 
-ARG VITE_API_URL
+ARG VITE_API_BASE_URL
 
-ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
 RUN npm run build
 
